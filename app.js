@@ -51,7 +51,9 @@ let cacheApiToFile = (request, body) => {
 }
 
 let getCache = (request) => {
-  return fileSystem.readFileSync("." + request.path + md5(JSON.stringify(request.body)) + ".json", {encoding: "utf8", flag: "r"})
+  return fileSystem.readFileSync("." + request.path + md5(JSON.stringify(request.body)) + ".json", (err) => {
+    console.log("Error")
+  })
 }
 
 app.listen(port, (err) => {
